@@ -14,6 +14,10 @@ $(document).ready(function(){
     calc.allClear()
   })
 
+  $(".dot").on("click", ()=>{
+    calc.dot()
+  })
+
   $(".return").on("click", ()=>{
     calc.return()
   })
@@ -67,35 +71,54 @@ class Calculator{
   setInputedValue = function(text){
     this.$input_number.val(this.getInputedValue() + text)
   }
+
+  dot = function(){
+    this.decimalPoint()
+  }
+  
   return = function(){
     this.$input_number.val(this.getInputedValue().slice(0, -1))
   }
+  
+  decimalPoint = function(){
+    if(Number(this.getInputedValue()) !== 0){
+      this.$input_number.val(this.getInputedValue() + ".")
+    }else{
+      this.$input_number.val(0 + ".")
+    }
+  }
 
   plus = function(){
+    this.calclate()
     this.memory = Number(this.getInputedValue())
     this.operator = "+"
     this.resetNumber()
   }
 
   minus = function(){
+    this.calclate()
     this.memory = Number(this.getInputedValue())
     this.operator = "-"
     this.resetNumber()
   }
 
   multiple = function(){
+    this.calclate()
     this.memory = Number(this.getInputedValue())
     this.operator = "*"
     this.resetNumber()
   }
 
   division = function(){
+    this.calclate()
     this.memory = Number(this.getInputedValue())
     this.operator = "/"
     this.resetNumber()
   }
 
   calclate = function(){
+    // console.log(this.memory, Number(this.getInputedValue()))
+
     if(this.operator === "+"){
       this.$input_number.val(this.memory + Number(this.getInputedValue()))
     }
