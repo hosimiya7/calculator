@@ -1,141 +1,140 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
   const calc = new Calculator()
 
-  const $input_number = $("#input_number")
-  let memory = 0
-  let operator = ""
-
-  $(".number").on("click", function(){
+  $(".number").on("click", function () {
     calc.setInputedValue($(this).text())
   })
 
-  $(".all_clear").on("click", ()=>{
+  $(".all_clear").on("click", () => {
     calc.allClear()
   })
 
-  $(".dot").on("click", ()=>{
+  $(".dot").on("click", () => {
     calc.dot()
   })
 
-  $(".return").on("click", ()=>{
+  $(".return").on("click", () => {
     calc.return()
   })
 
-  $(".plus").on("click", ()=>{
+  $(".plus").on("click", () => {
     calc.plus()
   })
 
-  $(".minus").on("click", ()=>{
+  $(".minus").on("click", () => {
     calc.minus()
   })
 
-  $(".multiple").on("click", ()=>{
+  $(".multiple").on("click", () => {
     calc.multiple()
   })
 
-  $(".division").on("click", ()=>{
+  $(".division").on("click", () => {
     calc.division()
   })
 
-  $(".equal").on("click", ()=>{
+  $(".equal").on("click", () => {
     calc.calclate()
   })
 
 })
 
-class Calculator{
+class Calculator {
 
   memory
   operator
   $input_number
 
-  constructor(){
+  constructor() {
     this.resetMemory()
     this.$input_number = $("#input_number")
   }
-  resetMemory = function(){
+
+  resetMemory = function () {
     this.memory = 0
     this.operator = ""
   }
-  allClear = function(){
+
+  allClear = function () {
     this.resetNumber()
     this.resetMemory()
   }
-  resetNumber = function(){
+
+  resetNumber = function () {
     this.$input_number.val("")
   }
-  getInputedValue = function(){
+
+  getInputedValue = function () {
     return this.$input_number.val()
   }
-  setInputedValue = function(text){
+
+  setInputedValue = function (text) {
     this.$input_number.val(this.getInputedValue() + text)
   }
 
-  dot = function(){
+  dot = function () {
     this.decimalPoint()
   }
-  
-  return = function(){
+
+  return = function () {
     this.$input_number.val(this.getInputedValue().slice(0, -1))
   }
-  
-  decimalPoint = function(){
-    if(Number(this.getInputedValue()) !== 0){
+
+  decimalPoint = function () {
+    if (Number(this.getInputedValue()) !== 0) {
       this.$input_number.val(this.getInputedValue() + ".")
-    }else{
+    } else {
       this.$input_number.val(0 + ".")
     }
   }
 
-  plus = function(){
+  plus = function () {
     this.calclate()
     this.memory = Number(this.getInputedValue())
     this.operator = "+"
     this.resetNumber()
   }
 
-  minus = function(){
+  minus = function () {
     this.calclate()
     this.memory = Number(this.getInputedValue())
     this.operator = "-"
     this.resetNumber()
   }
 
-  multiple = function(){
+  multiple = function () {
     this.calclate()
     this.memory = Number(this.getInputedValue())
     this.operator = "*"
     this.resetNumber()
   }
 
-  division = function(){
+  division = function () {
     this.calclate()
     this.memory = Number(this.getInputedValue())
     this.operator = "/"
     this.resetNumber()
   }
 
-  calclate = function(){
-    // console.log(this.memory, Number(this.getInputedValue()))
+  calclate = function () {
 
-    if(this.operator === "+"){
+    if (this.operator === "+") {
       this.$input_number.val(this.memory + Number(this.getInputedValue()))
     }
 
-    if(this.operator === "-"){
+    if (this.operator === "-") {
       this.$input_number.val(this.memory - Number(this.getInputedValue()))
     }
 
-    if(this.operator === "*"){
+    if (this.operator === "*") {
       this.$input_number.val(this.memory * Number(this.getInputedValue()))
     }
 
-    if(this.operator === "/"){
+    if (this.operator === "/") {
       this.$input_number.val(this.memory / Number(this.getInputedValue()))
     }
-    
+
     this.resetMemory()
   }
 }
-
