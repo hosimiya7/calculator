@@ -92,8 +92,6 @@ class Calculator {
   }
 
   plus = function () {
-    // this.calclate()
-    // this.memory = Number(this.getInputedValue())
     this.memory_array.push(Number(this.getInputedValue()))
     this.operator = "+"
     this.memory_array.push(this.operator)
@@ -101,8 +99,6 @@ class Calculator {
   }
 
   minus = function () {
-    // this.calclate()
-    // this.memory = Number(this.getInputedValue())
     this.memory_array.push(Number(this.getInputedValue()))
     this.operator = "-"
     this.memory_array.push(this.operator)
@@ -110,8 +106,6 @@ class Calculator {
   }
 
   multiple = function () {
-    // this.calclate()
-    // this.memory_ = Number(this.getInputedValue())
     this.memory_array.push(Number(this.getInputedValue()))
     this.operator = "*"
     this.memory_array.push(this.operator)
@@ -119,8 +113,6 @@ class Calculator {
   }
 
   division = function () {
-    // this.calclate()
-    // this.memory = Number(this.getInputedValue())
     this.memory_array.push(Number(this.getInputedValue()))
     this.operator = "/"
     this.memory_array.push(this.operator)
@@ -130,95 +122,29 @@ class Calculator {
   calclate = function () {
     
     this.memory_array.push(Number(this.getInputedValue()))
-    console.log(this.memory_array)
-    let array_length = this.memory_array.length
 
     const priority = {
       0: ["+", "-"],
       1: ["*", "/"],
     }
-    // for(let count = 0; count <= array_length; count++){
-      const is_exist_priority1 = this.memory_array.some(elem => priority[1].indexOf(elem))
-      const is_exist_priority0 = this.memory_array.some(elem => priority[0].indexOf(elem))
-      
-
-      if(is_exist_priority1 === true){
-
-        const priority_index = this.getOperatorIndex(priority[1])
-        // console.log(priority_index)
-
-        if(priority_index > 0){
-
-          let operator = this.memory_array[priority_index]
-          let operand_1 = this.memory_array[priority_index - 1]
-          let operand_2 = this.memory_array[priority_index + 1]
-          let ans = 0
-
-        // なんで逆なの…
-          if(operator = "*"){
-            ans = operand_1 / operand_2
-          }
-          if(operator = "/"){
-            ans = operand_1 * operand_2
-          }
-        
-        this.memory_array.splice(priority_index - 1, 3)
-        this.memory_array.splice(0, 0, ans)
-        // console.log(this.memory_array)
-        
-        }
-      }
-      // 上のif分繰り返す
-
-      if(is_exist_priority0 === true){
-
-        const priority_index = this.getOperatorIndex(priority[0])
-        // console.log(priority_index)
-
-        if(priority_index > 0){
-
-          let operator = this.memory_array[priority_index]
-          let operand_1 = this.memory_array[priority_index - 1]
-          let operand_2 = this.memory_array[priority_index + 1]
-          let ans = 0
-
-        // なんで逆なの…
-          if(operator = "+"){
-            ans = operand_1 + operand_2
-          }
-          if(operator = "-"){
-            ans = operand_1 - operand_2
-          }
-        
-        this.memory_array.splice(priority_index - 1, 3)
-        this.memory_array.splice(0, 0, ans)
-        // console.log(this.memory_array)
-        
-        }
-
-      }
-      // ifを繰り返す
-      this.$input_number.text()
-    
   
+    let is_exist_priority1 = this.memory_array.some(elem => priority[1].indexOf(elem) >= 0)
+    let is_exist_priority0 = this.memory_array.some(elem => priority[0].indexOf(elem) >= 0)
+    
+    while(is_exist_priority1 === true){
+      this.recursiveCalclate(1)
+      is_exist_priority1 = this.memory_array.some(elem => priority[1].indexOf(elem) >= 0)
+    }
 
-    // }
-    // if (this.operator === "+") {
-    //   this.$input_number.val(this.memory + Number(this.getInputedValue()))
-    // }
+    while(is_exist_priority0 === true){
 
-    // if (this.operator === "-") {
-    //   this.$input_number.val(this.memory - Number(this.getInputedValue()))
-    // }
+      this.recursiveCalclate(0)
+      
+      is_exist_priority0 = this.memory_array.some(elem => priority[0].indexOf(elem) >= 0)
+    }
 
-    // if (this.operator === "*") {
-    //   this.$input_number.val(this.memory * Number(this.getInputedValue()))
-    // }
-
-    // if (this.operator === "/") {
-    //   this.$input_number.val(this.memory / Number(this.getInputedValue()))
-    // }
-
+    this.$input_number.val(this.memory_array[0])
+  
     this.resetMemory()
   }
 
@@ -234,4 +160,36 @@ class Calculator {
     return operatorIndex
   } 
 
+ recursiveCalclate = function(index){
+  const priority = {
+    0: ["+", "-"],
+    1: ["*", "/"],
+  }
+  const priority_index = this.getOperatorIndex(priority[index])
+
+  let operator = this.memory_array[priority_index]
+  let operand_1 = this.memory_array[priority_index - 1]
+  let operand_2 = this.memory_array[priority_index + 1]
+  let ans = 0
+
+  if(operator === "*"){
+    ans = operand_1 * operand_2
+  }
+  if(operator === "/"){
+    ans = operand_1 / operand_2
+  }
+
+
+
+  if(operator === "+"){
+    ans = operand_1 + operand_2
+  }
+  if(operator === "-"){
+    ans = operand_1 - operand_2
+  }
+  
+  this.memory_array.splice(priority_index - 1, 3)
+  this.memory_array.splice(priority_index - 1, 0, ans)
+
+  }
 }
