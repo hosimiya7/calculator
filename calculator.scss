@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+}
+
+body{
+    // background: linear-gradient(-135deg, rgb(254, 255, 186), rgb(77, 79, 224));
+    background-repeat: no-repeat;
+}
+
+.claculate-wrapper{
+    margin: 2em 4em;
+    button{
+        width: 80px;
+        height: 80px;
+        border: none;
+        outline: none;
+        background: transparent;
+        font-size: 2em;
+    }
+    .row1{
+        background-color: rgb(116, 236, 236);
+    }
+    .row2{
+        background-color: rgb(91, 204, 212);
+    }
+    .row3{
+        background-color: rgb(69, 162, 179);
+    }
+    .row4{
+        background-color: rgb(75, 139, 177);
+    }
+    .row5{
+        background-color: rgb(57, 99, 153);
+    }
+    .row6{
+        background-color: rgb(41, 60, 124);
+    }
+    input{
+        border: 1px solid #aaa;
+        font-size: 1.5em;
+        width: 240px;
+        height: 40px;
+        margin: 0 2em;
+    }
+}

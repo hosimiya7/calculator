@@ -4,43 +4,47 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="calculator.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" defer></script>
   <script src="calculator.js" defer></script>
   <title>calculator</title>
 </head>
 <body>
-  <table>
-    <tr>
-      <td><button class="number">7</button></td>
-      <td><button class="number">8</button></td>
-      <td><button class="number">9</button></td>
-    </tr>
-    <tr>
-      <td><button class="number">4</button></td>
-      <td><button class="number">5</button></td>
-      <td><button class="number">6</button></td>
-    </tr>
-    <tr>
-      <td><button class="number">1</button></td>
-      <td><button class="number">2</button></td>
-      <td><button class="number">3</button></td>
-    </tr>
-    <tr>
-      <td><button class="number">0</button></td>
-      <td><button class="dot">.</button></td>
-      <td><button class="equal">=</button></td>
-    </tr>
-    <tr>
-      <td><button class="plus">+</button></td>
-      <td><button class="minus">-</button></td>
-      <td><button class="multiple">*</button></td>
-    </tr>    
-    <tr>
-      <td><button class="division">/</button></td>
-      <td><button class="return">←</button></td>
-      <td><button class="all_clear">C</button></td>
-    </tr>
-  </table>
-  <input type="text" name="" id="input_number" readonly>
+  <div class="claculate-wrapper flex">
+
+    <table class="table">
+      <tr>
+        <td><button class="number row1">7</button></td>
+        <td><button class="number row1">8</button></td>
+        <td><button class="number row1">9</button></td>
+      </tr>
+      <tr>
+        <td><button class="number row2">4</button></td>
+        <td><button class="number row2">5</button></td>
+        <td><button class="number row2">6</button></td>
+      </tr>
+      <tr>
+        <td><button class="number row3">1</button></td>
+        <td><button class="number row3">2</button></td>
+        <td><button class="number row3">3</button></td>
+      </tr>
+      <tr>
+        <td><button class="number row4">0</button></td>
+        <td><button class="dot row4">.</button></td>
+        <td><button class="equal row4">=</button></td>
+      </tr>
+      <tr>
+        <td><button class="plus row5">+</button></td>
+        <td><button class="minus row5">-</button></td>
+        <td><button class="multiple row5">*</button></td>
+      </tr>    
+      <tr>
+        <td><button class="division row6">/</button></td>
+        <td><button class="return row6">←</button></td>
+        <td><button class="all_clear row6">C</button></td>
+      </tr>
+    </table>
+    <input type="text" name="" id="input_number" readonly>
+  </div>
 </body>
 </html>
