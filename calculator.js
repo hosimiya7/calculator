@@ -84,10 +84,12 @@ class Calculator {
   }
 
   decimalPoint = function () {
-    if (Number(this.getInputedValue()) !== 0) {
-      this.$input_number.val(this.getInputedValue() + ".")
-    } else {
-      this.$input_number.val(0 + ".")
+    if(this.getInputedValue().indexOf(".") === -1){
+      if (Number(this.getInputedValue()) !== 0) {
+        this.$input_number.val(this.getInputedValue() + ".")
+      } else {
+        this.$input_number.val(0 + ".")
+      }
     }
   }
 
@@ -122,7 +124,7 @@ class Calculator {
   calclate = function () {
     
     this.memory_array.push(Number(this.getInputedValue()))
-
+    console.log(this.memory_array)
     const priority = {
       0: ["+", "-"],
       1: ["*", "/"],
@@ -144,7 +146,7 @@ class Calculator {
     }
 
     this.$input_number.val(this.memory_array[0])
-  
+    console.log(this.memory_array)
     this.resetMemory()
   }
 
@@ -178,9 +180,6 @@ class Calculator {
   if(operator === "/"){
     ans = operand_1 / operand_2
   }
-
-
-
   if(operator === "+"){
     ans = operand_1 + operand_2
   }
