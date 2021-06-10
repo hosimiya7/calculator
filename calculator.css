@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -28,10 +29,10 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: 0;
   overflow: hidden;
   top: 0;
   left: 0;
+  z-index: -1;
 }
 
 .bubble {
@@ -116,6 +117,7 @@ body {
 
 .claculate-wrapper {
   margin: 2em 4em;
+  z-index: 1;
 }
 
 .claculate-wrapper button {
@@ -157,5 +159,254 @@ body {
   width: 240px;
   height: 40px;
   margin: 0 2em;
+}
+
+.fishes {
+  width: 100%;
+}
+
+.fishes {
+  width: 100px;
+  height: 100px;
+}
+
+.fishes .fish1 {
+  position: absolute;
+  top: 200px;
+  width: 100px;
+  height: 100px;
+  -webkit-animation: fish 8s ease-in infinite;
+          animation: fish 8s ease-in infinite;
+  /*ease-inは最初ゆっくりで後半に減速 速め*/
+  z-index: -2;
+}
+
+.fishes .fish2 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 400px;
+  z-index: -2;
+  -webkit-animation: fish4 18s ease-out infinite;
+          animation: fish4 18s ease-out infinite;
+  /*ease-inは最初ゆっくりで後半に減速　ゆっくり*/
+}
+
+.fishes .fish3 {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0px;
+  z-index: -2;
+  -webkit-animation: fish3 30s ease-in infinite;
+          animation: fish3 30s ease-in infinite;
+  /*ease-inは最初ゆっくりで後半に減速*/
+}
+
+.fishes .fish4 {
+  position: absolute;
+  top: 240px;
+  width: 100px;
+  height: 100px;
+  z-index: -2;
+  -webkit-animation: fish4 10s ease-in infinite;
+          animation: fish4 10s ease-in infinite;
+  /*ease-inは最初ゆっくりで後半に減速*/
+}
+
+.fishes .fish5 {
+  position: absolute;
+  top: 500px;
+  width: 100px;
+  height: 100px;
+  z-index: -2;
+  -webkit-animation: fish5 40s ease-in infinite;
+          animation: fish5 40s ease-in infinite;
+  /*ease-inは最初ゆっくりで後半に減速*/
+}
+
+.fishes .fish6 {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 300px;
+  z-index: -2;
+  -webkit-animation: fish2 13s ease-out infinite;
+          animation: fish2 13s ease-out infinite;
+  /*ease-inは最初ゆっくりで後半に減速*/
+}
+
+@-webkit-keyframes fish {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  40% {
+    -webkit-transform: translate(calc(40vw - 100px), 100px);
+            transform: translate(calc(40vw - 100px), 100px);
+  }
+  80% {
+    -webkit-transform: translate(calc(80vw - 100px), 150px);
+            transform: translate(calc(80vw - 100px), 150px);
+  }
+  100% {
+    -webkit-transform: translate(calc(100vw - 100px), 200px);
+            transform: translate(calc(100vw - 100px), 200px);
+  }
+}
+
+@keyframes fish {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  40% {
+    -webkit-transform: translate(calc(40vw - 100px), 100px);
+            transform: translate(calc(40vw - 100px), 100px);
+  }
+  80% {
+    -webkit-transform: translate(calc(80vw - 100px), 150px);
+            transform: translate(calc(80vw - 100px), 150px);
+  }
+  100% {
+    -webkit-transform: translate(calc(100vw - 100px), 200px);
+            transform: translate(calc(100vw - 100px), 200px);
+  }
+}
+
+@-webkit-keyframes fish2 {
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  70% {
+    -webkit-transform: translate(calc(30vw - 100px), 200px);
+            transform: translate(calc(30vw - 100px), 200px);
+  }
+  30% {
+    -webkit-transform: translate(calc(70vw - 100px), -300px);
+            transform: translate(calc(70vw - 100px), -300px);
+  }
+  0% {
+    -webkit-transform: translate(calc(100vw - 100px), -100px);
+            transform: translate(calc(100vw - 100px), -100px);
+  }
+}
+
+@keyframes fish2 {
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  70% {
+    -webkit-transform: translate(calc(30vw - 100px), 200px);
+            transform: translate(calc(30vw - 100px), 200px);
+  }
+  30% {
+    -webkit-transform: translate(calc(70vw - 100px), -300px);
+            transform: translate(calc(70vw - 100px), -300px);
+  }
+  0% {
+    -webkit-transform: translate(calc(100vw - 100px), -100px);
+            transform: translate(calc(100vw - 100px), -100px);
+  }
+}
+
+@-webkit-keyframes fish3 {
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  0% {
+    -webkit-transform: translate(calc(100vw - 100px), 200px);
+            transform: translate(calc(100vw - 100px), 200px);
+  }
+}
+
+@keyframes fish3 {
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  0% {
+    -webkit-transform: translate(calc(100vw - 100px), 200px);
+            transform: translate(calc(100vw - 100px), 200px);
+  }
+}
+
+@-webkit-keyframes fish4 {
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  70% {
+    -webkit-transform: translate(calc(30vw - 100px), -150px);
+            transform: translate(calc(30vw - 100px), -150px);
+  }
+  30% {
+    -webkit-transform: translate(calc(70vw - 100px), 100px);
+            transform: translate(calc(70vw - 100px), 100px);
+  }
+  0% {
+    -webkit-transform: translate(calc(100vw - 100px), 200px);
+            transform: translate(calc(100vw - 100px), 200px);
+  }
+}
+
+@keyframes fish4 {
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  70% {
+    -webkit-transform: translate(calc(30vw - 100px), -150px);
+            transform: translate(calc(30vw - 100px), -150px);
+  }
+  30% {
+    -webkit-transform: translate(calc(70vw - 100px), 100px);
+            transform: translate(calc(70vw - 100px), 100px);
+  }
+  0% {
+    -webkit-transform: translate(calc(100vw - 100px), 200px);
+            transform: translate(calc(100vw - 100px), 200px);
+  }
+}
+
+@-webkit-keyframes fish5 {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  30% {
+    -webkit-transform: translate(calc(30vw - 100px), -50px);
+            transform: translate(calc(30vw - 100px), -50px);
+  }
+  70% {
+    -webkit-transform: translate(calc(70vw - 100px), 50px);
+            transform: translate(calc(70vw - 100px), 50px);
+  }
+  100% {
+    -webkit-transform: translate(calc(100vw - 100px), -50px);
+            transform: translate(calc(100vw - 100px), -50px);
+  }
+}
+
+@keyframes fish5 {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  30% {
+    -webkit-transform: translate(calc(30vw - 100px), -50px);
+            transform: translate(calc(30vw - 100px), -50px);
+  }
+  70% {
+    -webkit-transform: translate(calc(70vw - 100px), 50px);
+            transform: translate(calc(70vw - 100px), 50px);
+  }
+  100% {
+    -webkit-transform: translate(calc(100vw - 100px), -50px);
+            transform: translate(calc(100vw - 100px), -50px);
+  }
 }
 /*# sourceMappingURL=calculator.css.map */
